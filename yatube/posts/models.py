@@ -29,11 +29,14 @@ class Post(models.Model):
         Group,
         blank=True,
         null=True,
-        on_delete=models.SET(''),
+        on_delete=models.SET_NULL,
         related_name='posts',
         verbose_name='Группа',
     )
 
+    def __str__(self):
+        return self.text
+
     class Meta:
         verbose_name = 'Посты'
-        ordering = ['-pub_date']
+        ordering = ('-pub_date',)
